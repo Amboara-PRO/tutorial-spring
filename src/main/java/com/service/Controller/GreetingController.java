@@ -2,7 +2,7 @@ package com.service.Controller;
 
 import java.util.concurrent.atomic.AtomicLong;
 
-import com.service.Entity.Greeting;
+import com.service.Entity.GreetingEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,10 +14,10 @@ public class GreetingController {
     private final AtomicLong counter = new AtomicLong();
 
     @GetMapping("/greeting")
-    public Greeting greeting(
+    public GreetingEntity greeting(
             @RequestParam(value = "name", defaultValue = "World") String name) {
 
-        return new Greeting(
+        return new GreetingEntity(
                 counter.incrementAndGet(),
                 String.format(template, name)
         );
